@@ -1,0 +1,35 @@
+ErrorDescription=Attempt to modify widget with native DOM method `appendChild`
+ErrorType=UnhandledPromiseRejection
+ErrorTypeText=
+ErrorNumber=
+ProcessID=7084
+ThreadID=3936
+SourceFile=devtools://devtools/bundled/devtools_app.html
+Line=1
+Character=70807
+DocumentURL=devtools://devtools/bundled/ui/legacy/legacy.js
+OSProduct=Windows (Version 25)
+OSVersion=10.0.26100.0
+OSServicePack=
+UserAgentString=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36 Edg/142.0.0.0
+StackTraceAvailability=2
+StackTraceHash=6C262D669607AE90CEA995C6E1A300C7ECBBA73D
+IsTerminal=False
+DependentPackageList=(null)
+ExecutablePath=C:\Program Files (x86)\Microsoft\EdgeWebView\Application\142.0.3595.53\msedgewebview2.exe
+ApplicationVersion=142.0.3595.53
+SpecialBuild=
+ChannelName=
+StackTrace=
+
+Error: Attempt to modify widget with native DOM method `appendChild`
+    at $e (devtools://devtools/bundled/ui/legacy/legacy.js:1:70807)
+    at Element.appendChild (devtools://devtools/bundled/ui/legacy/legacy.js:1:70962)
+    at ps.appendToolbarItem (devtools://devtools/bundled/ui/legacy/legacy.js:8:41631)
+    at ps.appendItemsAtLocation (devtools://devtools/bundled/ui/legacy/legacy.js:8:43055)
+    at async f.createActivityBarHeader (devtools://devtools/bundled/models/edge_focus_mode/edge_focus_mode.js:1:12581)
+
+Source modules:
+    devtools://devtools/bundled/ui/legacy/legacy.js c0474f2943a8d1b9547ad044eeace328334bd644bb159e08fdb7ac48454d9dc7
+    devtools://devtools/bundled/models/edge_focus_mode/edge_focus_mode.js 59426ce79cbe9f3423a16faa16d040d8817e70d0dee0698a84be446c03aaa2e3
+

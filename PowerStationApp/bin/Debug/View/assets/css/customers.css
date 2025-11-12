@@ -1,0 +1,36 @@
+/* View/assets/css/customers.css
+   أنشئ بتاريخ 2025-11-10
+   يحتوي قواعد خاصة بصفحة customers.html (مأخوذة من الكود المضمن في الصفحة الأصلية).
+   ملاحظات:
+   - تم وضع القواعد العامة في assets/css/main.css مسبقاً.
+   - هنا فقط قواعد خاصة بهذه الصفحة أو تكمل ما في main.css.
+*/
+
+/* تأثير انزلاق للبطاقات (تستخدم class animate-slide-up) */
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.35s ease forwards;
+  opacity: 0; /* سيملأها animation */
+}
+
+/* دعم خاصية animation-delay عندما يتم ضبطها ديناميكياً عبر JS */
+.animate-slide-up[style*="animation-delay"] {
+  /* لا حاجة لتجاوز؛ هذا السطر فقط لتوضيح النمط المسموح */
+}
+
+/* خصائص خفيفة خاصة بقائمة العملاء (إذا احتاجت لتعديل محلي لاحقاً) */
+#customers-list .customer-card { /* يمكن أن يورث من .customer-card في main.css */
+  /* قواعد إضافية إن احتجنا لاحقاً */
+}
+
+/* نهاية customers.css */

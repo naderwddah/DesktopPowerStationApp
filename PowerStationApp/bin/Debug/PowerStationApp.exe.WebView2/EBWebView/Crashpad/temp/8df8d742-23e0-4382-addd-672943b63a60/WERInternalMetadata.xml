@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<WERReportMetadata>
+ <OSVersionInformation>
+  <WindowsNTVersion>10.0</WindowsNTVersion>
+  <Build>26100</Build>
+  <Product>(0x30): Windows 10 Pro</Product>
+  <Edition>Professional</Edition>
+  <BuildString>26100.7019.amd64fre.ge_release.240331-1435</BuildString>
+  <Revision>7019</Revision>
+  <Flavor>Multiprocessor Free</Flavor>
+  <Architecture>X64</Architecture>
+  <LCID>1033</LCID>
+ </OSVersionInformation>
+ <ProcessInformation>
+  <Pid>7084</Pid>
+  <ImageName>msedgewebview2.exe</ImageName>
+  <CmdLineSignature></CmdLineSignature>
+  <Uptime></Uptime>
+  <Wow64></Wow64>
+  <IptEnabled>0</IptEnabled>
+ </ProcessInformation>
+ <ProcessMetadata>
+  <Channel>none</Channel>
+  <MetricsClientId>{F3017226-FE2A-4295-8BDF-00C3A9A7E4C</MetricsClientId>
+  <MetricsClientIdHash>5835970181910402727</MetricsClientIdHash>
+  <MetricsSessionId>30</MetricsSessionId>
+  <OfficialBuild>1</OfficialBuild>
+ </ProcessMetadata>
+ <ProblemSignatures>
+  <EventType>crashpad_jserror</EventType>
+  <Parameter0>msedgewebview2.exe</Parameter0>
+  <Parameter1>142.0.3595.53</Parameter1>
+  <Parameter2>DevTools</Parameter2>
+  <Parameter3>6C262D669607AE90CEA995C6E1A300C7ECBBA73D</Parameter3>
+  <Parameter4>UnhandledPromiseRejection</Parameter4>
+  <Parameter5>devtools://devtools/bundled/ui/legacy/legacy.js</Parameter5>
+  <Parameter6>1_70807</Parameter6>
+ </ProblemSignatures>
+ <SystemInformation>
+  <MID>7C91FBDB-6735-4A9A-BBEC-B1417DA1C9A0</MID>
+  <SystemManufacturer>HP</SystemManufacturer>
+  <SystemProductName>HP ZBook 17 G6</SystemProductName>
+  <BIOSVersion>R92 Ver. 01.32.00</BIOSVersion>
+ </SystemInformation>
+ <ReportInformation>
+  <Guid>8df8d742-23e0-4382-addd-672943b63a60</Guid>
+  <CreationTime>2025-11-12T13:57:12Z</CreationTime>
+ </ReportInformation>
+</WERReportMetadata>

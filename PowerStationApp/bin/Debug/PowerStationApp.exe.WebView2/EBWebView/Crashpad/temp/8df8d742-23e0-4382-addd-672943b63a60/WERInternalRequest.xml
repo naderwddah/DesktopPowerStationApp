@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<req ver="2">
+ <tlm>
+  <src>
+   <desc>
+    <mach>
+     <os>
+      <arg nm="vermaj" val="10"/>
+      <arg nm="vermin" val="0"/>
+      <arg nm="verbld" val="26100"/>
+      <arg nm="vercsdbld" val="7019"/>
+      <arg nm="verqfe" val="7019"/>
+      <arg nm="csdbld" val="7019"/>
+      <arg nm="versp" val=""/>
+      <arg nm="arch" val="9"/>
+      <arg nm="lcid" val="1033"/>
+      <arg nm="geoid" val="205"/>
+      <arg nm="sku" val="48"/>
+      <arg nm="domain" val="0"/>
+      <arg nm="portos" val="0"/>
+      <arg nm="ram" val="32574"/>
+      <arg nm="svolsz" val="248"/>
+      <arg nm="wimbt" val="0"/>
+      <arg nm="blddt" val="240331"/>
+      <arg nm="bldtm" val="1435"/>
+      <arg nm="bldbrch" val="ge_release"/>
+      <arg nm="os" val="Windows"/>
+      <arg nm="osver" val="10.0.26100.7019.amd64fre.ge_release.240331-1435"/>
+      <arg nm="buildflightid" val="AB7E9681-3590-449D-94EF-3BB8818EDBA9.1"/>
+      <arg nm="expid" val="RS:2D0BF,FX:117B97D4,FX:11CC111C,FX:11DF5B12,FX:11DF5B75,FX:124117A5,FX:12ECE1E8,FX:12F2E40E,FX:12F322BC,FX:12FF4FDD,FX:13004FF9,FX:1304E767,FX:1304EA0D,FX:13083122,FX:1318CA30,"/>
+      <arg nm="edition" val="Professional"/>
+     </os>
+     <hw>
+      <arg nm="form" val="2"/>
+      <arg nm="arch" val="9"/>
+      <arg nm="deviceclass" val="Windows.Desktop"/>
+      <arg nm="sysmfg" val="HP"/>
+      <arg nm="syspro" val="HP ZBook 17 G6"/>
+      <arg nm="bv" val="R92 Ver. 01.32.00"/>
+      <arg nm="ram" val="32768"/>
+      <arg nm="proccnt" val="16"/>
+      <arg nm="proclsp" val="2304"/>
+      <arg nm="wscpusc" val="0"/>
+      <arg nm="wsdsksc" val="0"/>
+      <arg nm="wscpudn" val="Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"/>
+      <arg nm="wsdgsc" val="0"/>
+      <arg nm="aoac" val="0"/>
+      <arg nm="bssku" val="9JA83US#ABA"/>
+      <arg nm="chid" val="{00b697c9-381e-5f09-9618-85a7fbc495c2}"/>
+      <arg nm="sdksz" val="953"/>
+     </hw>
+     <ctrl>
+      <arg nm="tm" val="0"/>
+      <arg nm="mid" val="7C91FBDB-6735-4A9A-BBEC-B1417DA1C9A0"/>
+      <arg nm="sample" val="6407133"/>
+      <arg nm="msft" val="0"/>
+      <arg nm="test" val="0"/>
+      <arg nm="scf" val="0"/>
+      <arg nm="commercialid" val=""/>
+      <arg nm="telemetry" val="Disabled"/>
+     </ctrl>
+    </mach>
+   </desc>
+  </src>
+  <reqs>
+   <req key="1">
+    <namespace svc="watson" ptr="generic" gp="generic" app="msedgewebview2.exe">
+     <arg nm="p1" val="msedgewebview2.exe"/>
+     <arg nm="p2" val="142.0.3595.53"/>
+     <arg nm="p3" val="DevTools"/>
+     <arg nm="p4" val="6C262D669607AE90CEA995C6E1A300C7ECBBA73D"/>
+     <arg nm="p5" val="UnhandledPromiseRejection"/>
+     <arg nm="p6" val="devtools://devtools/bundled/ui/legacy/legacy.js"/>
+     <arg nm="p7" val="1_70807"/>
+    </namespace>
+    <ctrl>
+     <arg nm="reportid" val="8df8d742-23e0-4382-addd-672943b63a60"/>
+     <arg nm="procmeta.Channel" val="none"/>
+     <arg nm="procmeta.MetricsClientId" val="{F3017226-FE2A-4295-8BDF-00C3A9A7E4C"/>
+     <arg nm="procmeta.MetricsClientIdHash" val="5835970181910402727"/>
+     <arg nm="procmeta.MetricsSessionId" val="30"/>
+     <arg nm="procmeta.OfficialBuild" val="1"/>
+    </ctrl>
+    <cmd nm="event">
+     <arg nm="eventtype" val="crashpad_jserror"/>
+     <arg nm="cat" val="generic"/>
+     <arg nm="p1" val="msedgewebview2.exe"/>
+     <arg nm="p2" val="142.0.3595.53"/>
+     <arg nm="p3" val="DevTools"/>
+     <arg nm="p4" val="6C262D669607AE90CEA995C6E1A300C7ECBBA73D"/>
+     <arg nm="p5" val="UnhandledPromiseRejection"/>
+     <arg nm="p6" val="devtools://devtools/bundled/ui/legacy/legacy.js"/>
+     <arg nm="p7" val="1_70807"/>
+    </cmd>
+   </req>
+  </reqs>
+ </tlm>
+</req>

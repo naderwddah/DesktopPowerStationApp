@@ -1,0 +1,282 @@
+/* assets/css/accounting.css
+   ملف أنماط صفحة المحاسبة (merged)
+   - مدموج من: accounting.css الأصلي + <style> المضمن المرسل من المستخدم
+   - تم إزالة التكرارات ودمج قواعد السلوك العام المتعلقة بالجداول، التبويبات، الشريط الجانبي، والتمرير.
+   تم التحديث بتاريخ: 2025-11-11
+*/
+
+/* ---------------------------
+   قواعد الشجرة والجداول المحاسبية (موجودة مسبقاً)
+   --------------------------- */
+.account-tree {
+  padding: 16px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eef2f6;
+  /* من المقطع القديم: استخدام خط مونويسبيس إذا رغبنا */
+  font-family: monospace;
+}
+.account-tree ul {
+  list-style-type: none;
+  margin: 6px 0 6px 0;
+  padding-right: 12px; /* يحتفظ بمحاذاة RTL */
+}
+.account-tree li {
+  margin: 6px 0;
+  padding-right: 8px;
+  position: relative;
+}
+/* رسم نقط/خط ترابط في الشجرة (من <style> الجديد) */
+.account-tree li::before {
+  content: "";
+  position: absolute;
+  right: -1rem;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid #d1d5db;
+  border-bottom: 2px solid #d1d5db;
+}
+.account-tree li:last-child::before {
+  border-right: none;
+}
+.account-type {
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  color: var(--ps-primary);
+  /* fallback color if var not defined */
+  color: #2563eb;
+}
+
+/* ---------------------------
+   جداول المحاسبة وتحسيناتها
+   --------------------------- */
+.accounting-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.accounting-table th {
+  background-color: #f9fafb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.accounting-table tr:hover {
+  background-color: #f9fafb;
+}
+
+/* debit/credit - دمج الألوان من النسختين مع الحفاظ على الدلالة */
+.accounting-table td.debit,
+.accounting-table .debit {
+  color: #ef4444; /* أحمر للمبالغ المدينـة */
+  font-weight: 600;
+}
+.accounting-table td.credit,
+.accounting-table .credit {
+  color: #10b981; /* أخضر للمبالغ الدائنة */
+  font-weight: 600;
+}
+
+/* تضمنت النسخة المرسلة تحسينات scroll و container */
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  background: transparent;
+  border-radius: 8px;
+}
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+.table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ---------------------------
+   حالات الشريط الجانبي - badge / status (مشتقة من common.css المرسل)
+   --------------------------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.status-active {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+.status-pending {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+.status-inactive {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+/* ---------------------------
+   main-content و scrollbars (مُوحَّد مع main.css، لكن هنا تحسين محلي)
+   --------------------------- */
+.main-content {
+  height: calc(100vh - 4rem); /* ارتفاع الشاشة كاملة ناقص ارتفاع الهيدر */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+.main-content::-webkit-scrollbar { width: 6px; }
+.main-content::-webkit-scrollbar-track { background: #f1f5f9; }
+.main-content::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 3px; }
+
+/* ---------------------------
+   عناصر الإدخال (form focus) — حافظنا على النمط المشترك والمحلي
+   --------------------------- */
+.form-input,
+.input, input[type="text"], input[type="search"], textarea, select {
+  width:100%;
+  padding: 8px 10px;
+  border: 1px solid #e6e9ef;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--ps-text, #222);
+  background: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-input:focus,
+.input:focus,
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ---------------------------
+   التبويبات (tabs)
+   --------------------------- */
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fade-in 0.3s ease-in-out; }
+
+.tab-btn {
+  position: relative;
+  transition: all 0.3s ease;
+}
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #2563eb;
+  transition: width 0.3s ease;
+}
+.tab-btn:hover::after { width: 100%; }
+.tab-btn.active { color: #2563eb; }
+.tab-btn.active::after { width: 100%; }
+
+/* تعريف keyframes fade-in إن لم تكن موجودة في main.css */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------
+   أزرار إجراءات، بطاقات، تقارير، إغلاقات
+   --------------------------- */
+.action-btn {
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  position: relative;
+  overflow: hidden;
+}
+.action-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255,255,255,0.2);
+  transition: width 0.3s ease;
+}
+.action-btn:hover::before { width: 100%; }
+
+/* stat-card (موجود مسبقاً — حفظنا وتوسّعنا) */
+.stat-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  overflow: hidden;
+  position: relative;
+}
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+.stat-card.blue { border-left-color: #3b82f6; }
+.stat-card.green { border-left-color: #10b981; }
+.stat-card.yellow { border-left-color: #f59e0b; }
+.stat-card.red { border-left-color: #ef4444; }
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  transform: translate(30px, -30px);
+}
+
+/* report-card (توثيق سابق + تحسينات من <style>) */
+.report-card {
+  background: #fff;
+  border: 1px solid #eef2f6;
+  padding: 12px;
+  border-radius: 8px;
+  transition: transform .12s ease, box-shadow .12s ease;
+  cursor: pointer;
+}
+.report-card:hover {
+  border-color: #2563eb;
+  box-shadow: 0 8px 20px rgba(15,23,42,0.06);
+  transform: translateY(-3px);
+}
+.report-icon { width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:8px; margin-bottom:8px; }
+
+/* closing-entry styling (دمج موجود وسابق) */
+.closing-entry {
+  background: linear-gradient(90deg, rgba(240,253,244,1) 0%, rgba(255,255,255,1) 100%);
+  border: 1px solid #e6f4ea;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ---------------------------
+   Responsive tweaks
+   --------------------------- */
+@media (max-width: 768px) {
+  .account-tree { overflow-x: auto; white-space: nowrap; padding-bottom: 12px; }
+}
+
+/* ---------------------------
+   Animation slide-up (مستخدم عبر UI)
+   --------------------------- */
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up .35s ease both; }
+
+/* نهاية ملف accounting.css */

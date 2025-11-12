@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المحاسبة ودفتر الأستاذ - نظام إدارة الكهرباء</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../assets/js/tailwind.js"></script>
+    <link rel="stylesheet" href="../assets/css/remixicon.css" />
+    <link rel="stylesheet" href="../assets/css/accounting.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="bg-gray-50">
+    <div class="flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div id="header"></div>
+
+        <!-- Main Content -->
+        <main class="main-content p-4 md:p-6">
+          <div class="bg-white rounded-lg shadow-sm mb-6 overflow-hidden">
+            <div class="flex border-b overflow-x-auto">
+              <button
+                id="tab-chart"
+                class="tab-btn active px-6 py-4 font-medium text-primary whitespace-nowrap"
+              >
+                شجرة الحسابات
+              </button>
+              <button
+                id="tab-journal"
+                class="tab-btn px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
+              >
+                القيود اليومية
+              </button>
+              <button
+                id="tab-ledger"
+                class="tab-btn px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
+              >
+                دفتر الأستاذ العام
+              </button>
+              <button
+                id="tab-trial"
+                class="tab-btn px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
+              >
+                الأرصدة
+              </button>
+              <button
+                id="tab-closing"
+                class="tab-btn px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
+              >
+                الإغلاقات المحاسبية
+              </button>
+              <button
+                id="tab-reports"
+                class="tab-btn px-6 py-4 font-medium text-gray-500 hover:text-gray-700 whitespace-nowrap"
+              >
+                تقارير مالية
+              </button>
+            </div>
+          </div>
+
+          <!-- إحصائيات مختصرة -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6"
+          >
+            <div class="card stat-card blue">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-500 text-sm">إجمالي الأصول</p>
+                  <p class="text-2xl font-bold text-gray-800">2.5M ريال</p>
+                </div>
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-600"
+                >
+                  <i class="ri-building-line ri-lg"></i>
+                </div>
+              </div>
+              <div class="mt-2 text-xs text-green-600">
+                <span class="flex items-center"
+                  ><i class="ri-arrow-up-line mr-1"></i>زيادة 8.2% عن الشهر
+                  الماضي</span
+                >
+              </div>
+            </div>
+            <div class="card stat-card green">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-500 text-sm">إجمالي الالتزامات</p>
+                  <p class="text-2xl font-bold text-gray-800">1.8M ريال</p>
+                </div>
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-600"
+                >
+                  <i class="ri-file-list-3-line ri-lg"></i>
+                </div>
+              </div>
+              <div class="mt-2 text-xs text-green-600">
+                <span class="flex items-center"
+                  ><i class="ri-arrow-down-line mr-1"></i>انخفاض 3.1% عن الشهر
+                  الماضي</span
+                >
+              </div>
+            </div>
+            <div class="card stat-card yellow">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-500 text-sm">صافي الربح</p>
+                  <p class="text-2xl font-bold text-gray-800">420K ريال</p>
+                </div>
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600"
+                >
+                  <i class="ri-money-dollar-circle-line ri-lg"></i>
+                </div>
+              </div>
+              <div class="mt-2 text-xs text-green-600">
+                <span class="flex items-center"
+                  ><i class="ri-arrow-up-line mr-1"></i>زيادة 12.5% عن الشهر
+                  الماضي</span
+                >
+              </div>
+            </div>
+            <div class="card stat-card red">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-500 text-sm">السيولة النقدية</p>
+                  <p class="text-2xl font-bold text-gray-800">850K ريال</p>
+                </div>
+                <div
+                  class="w-12 h-12 flex items-center justify-center rounded-full bg-red-100 text-red-600"
+                >
+                  <i class="ri-cash-line ri-lg"></i>
+                </div>
+              </div>
+              <div class="mt-2 text-xs text-red-600">
+                <span class="flex items-center"
+                  ><i class="ri-arrow-down-line mr-1"></i>انخفاض 5.3% عن الشهر
+                  الماضي</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- شجرة الحسابات -->
+          <div id="content-chart" class="tab-content active">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">شجرة الحسابات</h3>
+                <div class="flex gap-3">
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-add-line ml-2"></i>
+                    إضافة حساب
+                  </button>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-download-2-line ml-2"></i>
+                    تصدير
+                  </button>
+                </div>
+              </div>
+
+              <div class="account-tree">
+                <div class="account-type">الأصول (Assets)</div>
+                <ul>
+                  <li>
+                    1100 - الأصول المتداولة
+                    <ul>
+                      <li>
+                        1110 - النقدية
+                        <ul>
+                          <li>1111 - الصندوق</li>
+                          <li>1112 - البنك</li>
+                        </ul>
+                      </li>
+                      <li>
+                        1120 - الذمم المدينة
+                        <ul>
+                          <li>1121 - عملاء</li>
+                          <li>1122 - أوراق القبض</li>
+                        </ul>
+                      </li>
+                      <li>
+                        1130 - المخزون
+                        <ul>
+                          <li>1131 - مواد أولية</li>
+                          <li>1132 - تحت التشغيل</li>
+                          <li>1133 - تامة الصنع</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    1200 - الأصول الثابتة
+                    <ul>
+                      <li>1210 - المباني والإنشاءات</li>
+                      <li>1220 - المعدات والآلات</li>
+                      <li>1230 - وسائل النقل</li>
+                      <li>1240 - الأثاث والمكاتب</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <div class="account-type">الالتزامات (Liabilities)</div>
+                <ul>
+                  <li>
+                    2100 - الالتزامات المتداولة
+                    <ul>
+                      <li>
+                        2110 - الذمم الدائنة
+                        <ul>
+                          <li>2111 - موردين</li>
+                          <li>2112 - مستحقات</li>
+                        </ul>
+                      </li>
+                      <li>2120 - القروض قصيرة الأجل</li>
+                      <li>2130 - أوراق الدفع</li>
+                    </ul>
+                  </li>
+                  <li>
+                    2200 - الالتزامات طويلة الأجل
+                    <ul>
+                      <li>2210 - قروض طويلة الأجل</li>
+                      <li>2220 - سندات دفع</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <div class="account-type">حقوق الملكية (Equity)</div>
+                <ul>
+                  <li>3100 - رأس المال</li>
+                  <li>3200 - الاحتياطيات</li>
+                  <li>3300 - الأرباح المحتجزة</li>
+                </ul>
+
+                <div class="account-type">الإيرادات (Revenues)</div>
+                <ul>
+                  <li>
+                    4100 - إيرادات التشغيل
+                    <ul>
+                      <li>4110 - مبيعات الكهرباء</li>
+                      <li>4120 - رسوم الخدمات</li>
+                      <li>4130 - إيرادات أخرى</li>
+                    </ul>
+                  </li>
+                  <li>
+                    4200 - إيرادات غير تشغيلية
+                    <ul>
+                      <li>4210 - إيرادات استثمارات</li>
+                      <li>4220 - أرباح بيع أصول</li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <div class="account-type">المصاريف (Expenses)</div>
+                <ul>
+                  <li>
+                    5100 - تكاليف التشغيل
+                    <ul>
+                      <li>5110 - تكلفة الطاقة</li>
+                      <li>5120 - رواتب وأجور</li>
+                      <li>5130 - صيانة وتشغيل</li>
+                      <li>5140 - إيجارات</li>
+                    </ul>
+                  </li>
+                  <li>
+                    5200 - مصاريف إدارية
+                    <ul>
+                      <li>5210 - رواتب الإدارة</li>
+                      <li>5220 - مصاريف مكتب</li>
+                      <li>5230 - تسويق وإعلان</li>
+                    </ul>
+                  </li>
+                  <li>
+                    5300 - مصاريف مالية
+                    <ul>
+                      <li>5310 - مصاريف تمويل</li>
+                      <li>5320 - خسائر عملة</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- القيود اليومية -->
+          <div id="content-journal" class="tab-content">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">القيود اليومية</h3>
+                <div class="flex gap-3">
+                  <button class="action-btn btn btn-primary flex items-center">
+                    <i class="ri-add-line ml-2"></i>
+                    إضافة قيد
+                  </button>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-filter-3-line ml-2"></i>
+                    فلترة
+                  </button>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-download-2-line ml-2"></i>
+                    تصدير
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table
+                  class="min-w-full accounting-table divide-y divide-gray-200"
+                >
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        التاريخ
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        رقم القيد
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        البيان
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        الحساب
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        مدين
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        دائن
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        الإجراءات
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        21/05/2025
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        JE-1001
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        تسجيل فاتورة عميل #4582
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        عملاء / البنك
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        450 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        450 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                      >
+                        <div
+                          class="flex items-center space-x-2 space-x-reverse"
+                        >
+                          <button class="text-primary hover:text-blue-700">
+                            <i class="ri-eye-line"></i>
+                          </button>
+                          <button class="text-gray-500 hover:text-gray-700">
+                            <i class="ri-edit-line"></i>
+                          </button>
+                          <button class="text-red-500 hover:text-red-700">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        21/05/2025
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        JE-1002
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        شراء مواد صيانة
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        صيانة وتشغيل / البنك
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        1,250 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        1,250 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                      >
+                        <div
+                          class="flex items-center space-x-2 space-x-reverse"
+                        >
+                          <button class="text-primary hover:text-blue-700">
+                            <i class="ri-eye-line"></i>
+                          </button>
+                          <button class="text-gray-500 hover:text-gray-700">
+                            <i class="ri-edit-line"></i>
+                          </button>
+                          <button class="text-red-500 hover:text-red-700">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        20/05/2025
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        JE-1003
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        دفع رواتب الموظفين
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        رواتب وأجور / البنك
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        85,000 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        85,000 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                      >
+                        <div
+                          class="flex items-center space-x-2 space-x-reverse"
+                        >
+                          <button class="text-primary hover:text-blue-700">
+                            <i class="ri-eye-line"></i>
+                          </button>
+                          <button class="text-gray-500 hover:text-gray-700">
+                            <i class="ri-edit-line"></i>
+                          </button>
+                          <button class="text-red-500 hover:text-red-700">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        20/05/2025
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        JE-1004
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        تسجيل إيرادات شهر مايو
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        مبيعات الكهرباء / إيرادات
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        320,000 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        320,000 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                      >
+                        <div
+                          class="flex items-center space-x-2 space-x-reverse"
+                        >
+                          <button class="text-primary hover:text-blue-700">
+                            <i class="ri-eye-line"></i>
+                          </button>
+                          <button class="text-gray-500 hover:text-gray-700">
+                            <i class="ri-edit-line"></i>
+                          </button>
+                          <button class="text-red-500 hover:text-red-700">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        19/05/2025
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        JE-1005
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        استهلاك المعدات
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        استهلاك / مجمع استهلاك
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        15,000 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        15,000 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium"
+                      >
+                        <div
+                          class="flex items-center space-x-2 space-x-reverse"
+                        >
+                          <button class="text-primary hover:text-blue-700">
+                            <i class="ri-eye-line"></i>
+                          </button>
+                          <button class="text-gray-500 hover:text-gray-700">
+                            <i class="ri-edit-line"></i>
+                          </button>
+                          <button class="text-red-500 hover:text-red-700">
+                            <i class="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- دفتر الأستاذ العام -->
+          <div id="content-ledger" class="tab-content">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">
+                  دفتر الأستاذ العام
+                </h3>
+                <div class="flex gap-3">
+                  <select class="form-input w-48">
+                    <option>اختر الحساب</option>
+                    <option>1111 - الصندوق</option>
+                    <option>1112 - البنك</option>
+                    <option>1121 - عملاء</option>
+                    <option>2111 - موردين</option>
+                    <option>4110 - مبيعات الكهرباء</option>
+                  </select>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-download-2-line ml-2"></i>
+                    تصدير
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table
+                  class="min-w-full accounting-table divide-y divide-gray-200"
+                >
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        التاريخ
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        البيان
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        رقم المرجع
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        مدين
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        دائن
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        الرصيد
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        01/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        رصيد أول المدة
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        125,000 ريال
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        05/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        إيداع نقدية
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        JE-0998
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        25,000 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        150,000 ريال
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        10/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">سحب نقدية</td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        JE-0999
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        10,000 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        140,000 ريال
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        15/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        تحصيل من عميل
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        JE-1000
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        8,500 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        148,500 ريال
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        20/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">دفع لمورد</td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        JE-1003
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        12,000 ريال
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        136,500 ريال
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        21/05/2025
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        تحصيل فاتورة
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                      >
+                        JE-1001
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        450 ريال
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium debit"
+                      >
+                        136,950 ريال
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- الأرصدة -->
+          <div id="content-trial" class="tab-content">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">ميزان المراجعة</h3>
+                <div class="flex gap-3">
+                  <select class="form-input w-32">
+                    <option>مايو 2025</option>
+                    <option>أبريل 2025</option>
+                    <option>مارس 2025</option>
+                  </select>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-download-2-line ml-2"></i>
+                    تصدير
+                  </button>
+                </div>
+              </div>
+
+              <div class="table-container">
+                <table
+                  class="min-w-full accounting-table divide-y divide-gray-200"
+                >
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        رقم الحساب
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        اسم الحساب
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        مدين
+                      </th>
+                      <th
+                        class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        دائن
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        1111
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">الصندوق</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        136,950
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        1112
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">البنك</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        850,000
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        1121
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">عملاء</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        1,250,000
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        1210
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        المباني والإنشاءات
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        2,500,000
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        -
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        2111
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">موردين</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        450,000
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        2210
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        قروض طويلة الأجل
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        1,000,000
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        3100
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">رأس المال</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        3,000,000
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                      >
+                        3300
+                      </td>
+                      <td class="px-6 py-4 text-sm text-gray-500">
+                        الأرباح المحتجزة
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        -
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        287,950
+                      </td>
+                    </tr>
+                    <tr class="bg-gray-50 font-bold">
+                      <td
+                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+                        colspan="2"
+                      >
+                        المجموع
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm debit">
+                        4,736,950
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm credit">
+                        4,736,950
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- الإغلاقات المحاسبية -->
+          <div id="content-closing" class="tab-content">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">
+                  الإغلاقات المحاسبية
+                </h3>
+                <div class="flex gap-3">
+                  <select class="form-input w-32">
+                    <option>مايو 2025</option>
+                    <option>أبريل 2025</option>
+                    <option>مارس 2025</option>
+                  </select>
+                  <button class="action-btn btn btn-primary flex items-center">
+                    <i class="ri-refresh-line ml-2"></i>
+                    تنفيذ الإغلاق
+                  </button>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-md font-medium text-gray-700 mb-4">
+                  إغلاق حسابات الإيرادات
+                </h4>
+                <div class="closing-entry">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="text-sm font-medium text-gray-800">
+                        قيد إغلاق إيرادات شهر مايو
+                      </p>
+                      <p class="text-xs text-gray-500">21/05/2025 | JE-1050</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm debit">320,000 ريال مدين</p>
+                      <p class="text-sm credit">320,000 ريال دائن</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-md font-medium text-gray-700 mb-4">
+                  إغلاق حسابات المصاريف
+                </h4>
+                <div class="closing-entry">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="text-sm font-medium text-gray-800">
+                        قيد إغلاق مصاريف شهر مايو
+                      </p>
+                      <p class="text-xs text-gray-500">21/05/2025 | JE-1051</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm debit">285,000 ريال مدين</p>
+                      <p class="text-sm credit">285,000 ريال دائن</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="text-md font-medium text-gray-700 mb-4">
+                  إغلاق حسابات الأرباح والخسائر
+                </h4>
+                <div class="closing-entry">
+                  <div class="flex justify-between items-center">
+                    <div>
+                      <p class="text-sm font-medium text-gray-800">
+                        قيد تحويل صافي الربح إلى الأرباح المحتجزة
+                      </p>
+                      <p class="text-xs text-gray-500">21/05/2025 | JE-1052</p>
+                    </div>
+                    <div class="text-right">
+                      <p class="text-sm debit">35,000 ريال مدين</p>
+                      <p class="text-sm credit">35,000 ريال دائن</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 ml-3"
+                  >
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-green-800">
+                      تم إغلاق شهر مايو 2025 بنجاح
+                    </p>
+                    <p class="text-xs text-green-600">
+                      صافي الربح للشهر: 35,000 ريال
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- تقارير مالية -->
+          <div id="content-reports" class="tab-content">
+            <div class="card mb-6">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-800">
+                  التقارير المالية
+                </h3>
+                <div class="flex gap-3">
+                  <select class="form-input w-32">
+                    <option>مايو 2025</option>
+                    <option>أبريل 2025</option>
+                    <option>مارس 2025</option>
+                  </select>
+                  <button
+                    class="action-btn btn btn-secondary flex items-center"
+                  >
+                    <i class="ri-download-2-line ml-2"></i>
+                    تصدير الكل
+                  </button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="report-card">
+                  <div class="report-icon bg-blue-100 text-blue-600">
+                    <i class="ri-file-list-3-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    قائمة الدخل
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    عرض الإيرادات والمصاريف وصافي الربح للفترة المحددة
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-icon bg-green-100 text-green-600">
+                    <i class="ri-balance-scale-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    الميزانية العمومية
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    عرض الأصول والالتزامات وحقوق الملكية في تاريخ محدد
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-icon bg-yellow-100 text-yellow-600">
+                    <i class="ri-money-dollar-circle-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    قائمة التدفقات النقدية
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    عرض التدفقات النقدية الداخلة والخارجة من الأنشطة المختلفة
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-icon bg-purple-100 text-purple-600">
+                    <i class="ri-pie-chart-2-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    تقرير الأداء المالي
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    تحليل شامل للأداء المالي مع مؤشرات ونسب مالية
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-icon bg-red-100 text-red-600">
+                    <i class="ri-bar-chart-box-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    تقرير المقارنات
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    مقارنة الأداء بين فترات مختلفة أو مع المعايير
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="report-card">
+                  <div class="report-icon bg-indigo-100 text-indigo-600">
+                    <i class="ri-file-text-line text-2xl"></i>
+                  </div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    تقرير ضرائب
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-4">
+                    حساب الضرائب المستحقة والإقرارات الضريبية
+                  </p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500"
+                      >آخر تحديث: 21/05/2025</span
+                    >
+                    <button
+                      class="text-primary text-sm font-medium hover:text-blue-700"
+                    >
+                      عرض <i class="ri-arrow-left-line mr-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/js/common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // تفعيل التبويبات
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".tab-btn").forEach((b) => {
+              b.classList.remove("active", "text-primary");
+              b.classList.add("text-gray-500");
+            });
+            this.classList.add("active", "text-primary");
+            this.classList.remove("text-gray-500");
+
+            document
+              .querySelectorAll(".tab-content")
+              .forEach((c) => c.classList.remove("active"));
+            document
+              .getElementById(this.id.replace("tab-", "content-"))
+              .classList.add("active");
+          });
+        });
+
+        // إضافة تأثيرات حركية للبطاقات
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-slide-up");
+            }
+          });
+        });
+
+        document
+          .querySelectorAll(".stat-card, .report-card")
+          .forEach((card) => {
+            observer.observe(card);
+          });
+      });
+    </script>
+  </body>
+</html>

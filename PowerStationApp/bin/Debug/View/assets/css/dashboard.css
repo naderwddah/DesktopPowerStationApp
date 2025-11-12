@@ -1,0 +1,38 @@
+/* View/assets/css/dashboard.css
+   كُلّ ما اُستخِرج من <style> داخل dashboard.html بالإضافة إلى أنماط خاصة بهذه الصفحة.
+   أنشئ الملف بتاريخ 2025-11-10. المصدر: dashboard.html (inline <style> و keyframes المنشأة عبر JS).
+*/
+
+/* ارتفاع حاوية الرسم البياني المستخدم في dashboard */
+.chart-container {
+  position: relative;
+  height: 16rem; /* مستخلص من الصفحة */
+}
+
+/* تأثير نبض مخصص للروابط النشطة — خاص بهذه الصفحة */
+@keyframes pulse {
+  0% {
+    transform: translateX(-5px) scale(1);
+  }
+  50% {
+    transform: translateX(-8px) scale(1.02);
+  }
+  100% {
+    transform: translateX(-5px) scale(1);
+  }
+}
+
+/* طبقة التغطية للشاشات الصغيرة عند إظهار الشريط الجانبي */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 40;
+}
+
+/* حالة عرض الشريط الجانبي (يمكن توسيعها بتنسيق الشريط لاحقاً) */
+#sidebar.show {
+  transform: translateX(0);
+}
+
+/* أي قواعد خاصة أخرى ظهرت مكررة فقط في هذه الصفحة توضع هنا */
