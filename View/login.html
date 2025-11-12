@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول - نظام إدارة محطات الكهرباء</title>
+  <script src="./assets/js/tailwind.js"></script>
+  <link rel="stylesheet" href="./assets/css/remixicon.css" />
+  <style>
+    body { font-family: "Tajawal", sans-serif; }
+    .login-container { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%); }
+    .form-input:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); }
+    .login-button { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
+    .login-button:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3); }
+    .loading-spinner { border: 3px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top: 3px solid white; width: 20px; height: 20px; animation: spin 1s linear infinite; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .error-message { animation: shake 0.5s; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); } 20%, 40%, 60%, 80% { transform: translateX(5px); } }
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .feature-card { transition: all 0.3s ease; }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+  </style>
+</head>
+
+<body class="login-container min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden grid grid-cols-1 md:grid-cols-2 fade-in">
+
+    <!-- Right: Login Form -->
+    <div class="p-8 md:p-12 order-2 md:order-1">
+      <div class="text-center mb-8">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+            <i class="ri-flashlight-line text-white text-2xl"></i>
+          </div>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">نظام إدارة محطات الكهرباء</h1>
+        <p class="text-sm text-gray-500">قم بتسجيل الدخول للوصول إلى لوحة التحكم</p>
+      </div>
+
+      <form id="loginForm" class="space-y-6">
+        <div id="errorMessage" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-4 rounded error-message">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <i class="ri-error-warning-line text-red-400"></i>
+            </div>
+            <div class="mr-3">
+              <p class="text-sm text-red-700" id="errorText">فشل تسجيل الدخول. يرجى التحقق من البيانات.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700 mb-1">اسم المستخدم</label>
+          <div class="mt-1 relative">
+            <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <i class="ri-user-line text-gray-500"></i>
+            </span>
+            <input id="username" name="username" type="text" autocomplete="username" required 
+              class="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg shadow-sm form-input" 
+              placeholder="أدخل اسم المستخدم">
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-1">كلمة المرور</label>
+          <div class="mt-1 relative">
+            <span class="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <i id="passwordToggle" class="ri-eye-line text-gray-500 cursor-pointer"></i>
+            </span>
+            <input id="password" name="password" type="password" autocomplete="current-password" required 
+              class="w-full pr-10 pl-4 py-3 border border-gray-300 rounded-lg shadow-sm form-input" 
+              placeholder="أدخل كلمة المرور">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input id="rememberMe" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded ml-2">
+            <label for="rememberMe" class="block text-sm text-gray-700">تذكرني</label>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" id="loginButton" class="w-full py-3 px-4 login-button text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center">
+            <span id="buttonText">تسجيل الدخول</span>
+            <div id="loadingSpinner" class="loading-spinner ml-2 hidden"></div>
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-8 text-center text-sm text-gray-500">
+        <p>© 2025 نظام إدارة محطات الكهرباء. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+
+    <!-- Left: Illustration -->
+    <div class="hidden md:flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800 p-8 order-1 md:order-2">
+      <div class="text-center text-white">
+        <i class="ri-flashlight-fill text-6xl mb-6"></i>
+        <h2 class="text-3xl font-bold mb-4">نظام إدارة محطات الكهرباء</h2>
+        <img src="./assets/images/login.svg" alt="تسجيل الدخول" class="w-64 h-64 mx-auto mb-6">
+        <p class="text-blue-100 max-w-md mx-auto">نظام متكامل لإدارة وتشغيل محطات الكهرباء بكفاءة عالية.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('loginForm');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('errorMessage');
+      const errorText = document.getElementById('errorText');
+      const loginButton = document.getElementById('loginButton');
+      const buttonText = document.getElementById('buttonText');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      const passwordToggle = document.getElementById('passwordToggle');
+
+      passwordToggle.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('ri-eye-line');
+        this.classList.toggle('ri-eye-off-line');
+      });
+
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        errorMessage.classList.add('hidden');
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!username || !password) {
+          return showError('يرجى إدخال اسم المستخدم وكلمة المرور.');
+        }
+
+        setLoading(true);
+
+        // إرسال البيانات إلى C# عبر WebView2
+        const loginData = { action: "login", username, password };
+        if (window.chrome?.webview) {
+          window.chrome.webview.postMessage(loginData);
+        } else {
+          showError('بيئة التشغيل غير مدعومة.');
+        }
+      });
+
+      // استقبال الرد من C#
+      if (window.chrome?.webview) {
+        window.chrome.webview.addEventListener('message', (event) => {
+          const data = event.data;
+          if (data.status === "success") {
+            localStorage.setItem('user', JSON.stringify(data.user));
+            window.location.href = './index.html';
+          } else {
+            showError(data.message || 'فشل تسجيل الدخول.');
+          }
+          setLoading(false);
+        });
+      }
+
+      function showError(msg) {
+        errorText.textContent = msg;
+        errorMessage.classList.remove('hidden');
+      }
+
+      function setLoading(state) {
+        if (state) {
+          buttonText.textContent = 'جاري التحقق...';
+          loadingSpinner.classList.remove('hidden');
+          loginButton.disabled = true;
+        } else {
+          buttonText.textContent = 'تسجيل الدخول';
+          loadingSpinner.classList.add('hidden');
+          loginButton.disabled = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

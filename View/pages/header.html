@@ -1,0 +1,113 @@
+<header class="bg-white shadow-sm h-16 flex items-center justify-between px-6">
+  <div class="flex items-center">
+    <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-gray-700 ml-4">
+      <i class="ri-menu-line text-xl"></i>
+    </button>
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="بحث..."
+        class="bg-gray-100 rounded-full py-2 pr-10 pl-4 w-64 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+      />
+      <div
+        class="absolute top-0 right-0 mt-2 mr-3 w-5 h-5 flex items-center justify-center text-gray-500"
+      >
+        <i class="ri-search-line"></i>
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center space-x-4 space-x-reverse">
+    <div class="flex space-x-reverse space-x-2">
+      <div class="dropdown relative">
+        <button
+          class="bg-gray-50 p-2 rounded-full text-gray-600 hover:bg-gray-100"
+          id="languageBtn"
+        >
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-global-line"></i>
+          </div>
+        </button>
+        <div class="dropdown-content hidden absolute left-0 mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50" id="languageDropdown">
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <span class="ml-2">العربية</span>
+            <div class="w-5 h-5 flex items-center justify-center mr-auto">
+              <i class="ri-check-line text-primary"></i>
+            </div>
+          </a>
+          <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <span class="ml-2">English</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <button
+        class="w-10 h-10 flex items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 relative"
+        id="notificationBtn"
+      >
+        <i class="ri-notification-3-line text-xl"></i>
+        <span
+          class="absolute top-1 right-1 w-4 h-4 bg-red-500 rounded-full text-white text-xs flex items-center justify-center"
+          >5</span
+        >
+      </button>
+      <div class="notification-dropdown hidden absolute left-0 mt-2 w-80 bg-white rounded-md shadow-lg py-1 z-50" id="notificationDropdown">
+        <div class="px-4 py-2 border-b border-gray-100">
+          <h3 class="text-sm font-medium text-gray-800">الإشعارات</h3>
+        </div>
+        <div class="max-h-80 overflow-y-auto">
+          <a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500">
+                <i class="ri-user-add-line"></i>
+              </div>
+              <div class="mr-3 text-right">
+                <p class="text-sm font-medium text-gray-800">عميل جديد</p>
+                <p class="text-xs text-gray-500 mt-1">تم إضافة عميل جديد: أحمد محمد</p>
+                <p class="text-xs text-gray-400 mt-1">منذ 10 دقائق</p>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-500">
+                <i class="ri-error-warning-line"></i>
+              </div>
+              <div class="mr-3 text-right">
+                <p class="text-sm font-medium text-gray-800">فاتورة متأخرة</p>
+                <p class="text-xs text-gray-500 mt-1">فاتورة العميل #4582 متأخرة 5 أيام</p>
+                <p class="text-xs text-gray-400 mt-1">منذ ساعة</p>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="block px-4 py-3 hover:bg-gray-50">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-500">
+                <i class="ri-check-double-line"></i>
+              </div>
+              <div class="mr-3 text-right">
+                <p class="text-sm font-medium text-gray-800">تمت عملية دفع</p>
+                <p class="text-xs text-gray-500 mt-1">تم استلام دفع فاتورة #7854</p>
+                <p class="text-xs text-gray-400 mt-1">منذ 3 ساعات</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="px-4 py-2 border-t border-gray-100 text-center">
+          <a href="#" class="text-sm text-primary hover:text-primary-dark">عرض جميع الإشعارات</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <div class="ml-3 text-left">
+        <p class="text-sm font-medium text-gray-700">نادر القياضي</p>
+        <p class="text-xs text-gray-500">مدير النظام</p>
+      </div>
+      <div
+        class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center"
+      >
+        <span>ن</span>
+      </div>
+    </div>
+  </div>
+</header>
